@@ -16,7 +16,6 @@ h1{text-align:center;color:#ff7a00;margin:15px 0}
 .countdown{display:flex;justify-content:center;gap:10px;margin:10px 0 20px}
 .time-box{background:#ff7a00;color:white;width:75px;padding:10px 0;border-radius:12px}
 .time-box span{display:block;font-size:26px;font-weight:bold}
-.time-box small{font-size:12px}
 
 /* ===== LAYOUT ===== */
 .container{display:flex;gap:20px;max-width:1100px;margin:auto;padding:15px}
@@ -25,23 +24,20 @@ h1{text-align:center;color:#ff7a00;margin:15px 0}
 /* ===== SLIDER ===== */
 .slider{flex:1;overflow:hidden;border-radius:25px;position:relative;box-shadow:0 0 25px rgba(255,122,0,0.3)}
 .slides{display:flex;transition:0.4s ease}
-.slides img{width:100%;flex-shrink:0;user-select:none}
+.slides img{width:100%;flex-shrink:0}
 .arrow{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:42px;height:42px;border-radius:50%;border:none;
-  background:rgba(255,122,0,0.9);color:white;font-size:22px;
-  cursor:pointer;z-index:10;
+ position:absolute;top:50%;transform:translateY(-50%);
+ width:42px;height:42px;border-radius:50%;
+ border:none;background:rgba(255,122,0,0.9);
+ color:white;font-size:22px;cursor:pointer;z-index:10;
 }
 .arrow.left{left:10px}
 .arrow.right{right:10px}
 
 /* ===== DESCRIPTION ===== */
 .features{
-  margin-top:15px;
-  background:white;
-  padding:15px;
-  border-radius:20px;
-  box-shadow:0 0 20px rgba(255,122,0,0.2);
+  margin-top:15px;background:white;padding:15px;
+  border-radius:20px;box-shadow:0 0 20px rgba(255,122,0,0.2);
 }
 .features h3{color:#ff7a00;margin-top:0}
 
@@ -49,63 +45,76 @@ h1{text-align:center;color:#ff7a00;margin:15px 0}
 .form-box{flex:1;background:white;padding:20px;border-radius:30px;box-shadow:0 0 30px rgba(255,122,0,0.25)}
 .field{position:relative;margin:12px 0}
 .field input,.field select{
-  width:100%;padding:14px 15px 14px 45px;
-  border-radius:30px;border:2px solid #ff7a00;
-  font-size:15px;box-shadow:0 0 10px rgba(255,122,0,0.3);
+ width:100%;padding:14px 15px 14px 45px;
+ border-radius:30px;border:2px solid #ff7a00;
+ font-size:15px;
 }
 .field i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#ff7a00}
 
-.old-price{text-decoration:line-through;color:red;font-size:13px;margin-right:6px}
+/* اهتزاز عند الخطأ */
+.shake{
+ animation:shake 0.25s linear 2;
+ border-color:red !important;
+}
+@keyframes shake{
+ 0%{transform:translateX(0)}
+ 25%{transform:translateX(-4px)}
+ 50%{transform:translateX(4px)}
+ 75%{transform:translateX(-4px)}
+ 100%{transform:translateX(0)}
+}
+
+.old-price{color:red;text-decoration:line-through;font-size:13px}
 
 /* ===== DELIVERY ===== */
 .delivery-title{color:#ff7a00;font-weight:bold;margin:15px 0 8px}
 .delivery{display:flex;gap:12px}
 .option{flex:1;border:2px solid #ff7a00;border-radius:25px;padding:12px;text-align:center;cursor:pointer}
-.option.active{background:#ff7a00;color:white}
+.option.active{background:#ff7a00}
 .option.active i,.option.active p{color:white}
 .option i{font-size:24px;color:#ff7a00}
 .option p{margin:6px 0;color:#ff7a00;font-weight:bold}
 .dot{width:14px;height:14px;border-radius:50%;border:2px solid #ff7a00;margin:auto}
 .option.active .dot{background:white;border-color:white}
 
-/* ===== PRICE ===== */
+/* PRICE */
 .price{text-align:center;font-size:19px;font-weight:bold;color:#ff7a00;margin:15px 0}
 
-/* ===== BUTTON ===== */
+/* BUTTON */
 button{
-  width:100%;padding:15px;font-size:18px;border-radius:30px;
-  border:2px solid #ff7a00;background:white;color:#ff7a00;cursor:pointer;
+ width:100%;padding:15px;font-size:18px;
+ border-radius:30px;border:2px solid #ff7a00;
+ background:white;color:#ff7a00;cursor:pointer;
 }
 button:hover{background:#ff7a00;color:white}
 
-/* ===== SUCCESS OVERLAY ===== */
+/* SUCCESS OVERLAY */
 #success{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:white;
-  z-index:999;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+ display:none;
+ position:fixed;
+ inset:0;
+ background:white;
+ z-index:999;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
 }
 .check{
-  width:100px;height:100px;border-radius:50%;
-  background:white;border:4px solid #ff7a00;position:relative;
+ width:100px;height:100px;border-radius:50%;
+ background:white;border:4px solid #ff7a00;
+ position:relative;
 }
 .check::after{
-  content:"";
-  position:absolute;
-  width:25px;height:45px;
-  border-right:6px solid #ff7a00;
-  border-bottom:6px solid #ff7a00;
-  transform:rotate(45deg);
-  left:32px;top:18px;
+ content:"";
+ position:absolute;
+ width:25px;height:45px;
+ border-right:6px solid #ff7a00;
+ border-bottom:6px solid #ff7a00;
+ transform:rotate(45deg);
+ left:32px;top:18px;
 }
 #success h3{color:#ff7a00}
-#typing{color:black;font-size:18px;max-width:420px}
 </style>
 </head>
 
@@ -113,16 +122,8 @@ button:hover{background:#ff7a00;color:white}
 
 <h1>sahla dz – آمنة وسريعة</h1>
 
-<div class="countdown-title">مدة التخفيض</div>
-<div class="countdown">
-  <div class="time-box"><span id="h">48</span><small>ساعة</small></div>
-  <div class="time-box"><span id="m">00</span><small>دقيقة</small></div>
-  <div class="time-box"><span id="s">00</span><small>ثانية</small></div>
-</div>
-
 <div class="container">
 
-<!-- SLIDER -->
 <div style="flex:1">
 <div class="slider">
   <button class="arrow left" onclick="prev()">‹</button>
@@ -131,7 +132,7 @@ button:hover{background:#ff7a00;color:white}
     <img src="photo_5798528440758636031_y.jpg">
     <img src="photo_5798528440758636029_y.jpg">
     <img src="photo_5798528440758636028_y.jpg">
-    <img src="photo_5793999462169513572_y.jpg">
+    <img src="photo_5798528440758636028_y.jpg">
   </div>
   <button class="arrow right" onclick="next()">›</button>
 </div>
@@ -144,27 +145,33 @@ button:hover{background:#ff7a00;color:white}
 🔸 للقاراج: يحفظ المكسرات والحلويات مقرمشة لأطول مدة.<br>
 🔸 للسفر: خذيه معاك في خرجاتك لإعادة غلق أكياس الطعام بسهولة.<br>
 أصلي، متين، وشكله أنيق يضيف لمسة عصرية لمطبخك. 💎<br>
-⚠️ ملاحظة: الكمية محدودة جداً بسبب الطلب الكبير.<br>
-🛍️ اطلبي الآن عبر الرابط
+⚠️ الكمية محدودة جداً بسبب الطلب الكبير.
 </p>
 </div>
 </div>
 
-<!-- FORM -->
 <div class="form-box" id="form">
+<div class="field"><i class="fa-solid fa-user"></i>
+<input id="name" placeholder="الاسم واللقب"></div>
 
-<div class="field"><i class="fa-solid fa-user"></i><input placeholder="الاسم واللقب"></div>
-<div class="field"><i class="fa-solid fa-phone"></i><input placeholder="رقم الهاتف"></div>
+<div class="field"><i class="fa-solid fa-phone"></i>
+<input id="phone" placeholder="رقم الهاتف"></div>
 
 <div class="field">
-<select id="wilaya"></select>
+<select id="wilaya">
+<option value="">اختر الولاية</option>
+<option value="1">1 أدرار</option>
+<option value="2">2 الشلف</option>
+<option value="16">16 الجزائر</option>
+<option value="31">31 وهران</option>
+</select>
 </div>
 
 <div class="field">
 <select id="qty">
-<option value="1">1 قطعة — 1350 DA <span class="old-price">1800</span></option>
-<option value="2">2 قطعة — 2500 DA <span class="old-price">2700</span></option>
-<option value="3">3 قطع — 3750 DA <span class="old-price">4100</span></option>
+<option value="1">1 قطعة — 1350 DA (1800 قديم)</option>
+<option value="2">2 قطعة — 2500 DA (2700 قديم)</option>
+<option value="3">3 قطع — 3750 DA (4100 قديم)</option>
 </select>
 </div>
 
@@ -184,7 +191,6 @@ button:hover{background:#ff7a00;color:white}
 
 </div>
 
-<!-- SUCCESS -->
 <div id="success">
   <div class="check"></div>
   <h3>تم تاكيد الطلب</h3>
@@ -192,49 +198,28 @@ button:hover{background:#ff7a00;color:white}
 </div>
 
 <script>
+/* SLIDER */
 const slides=document.getElementById("slides");
-let index=0,total=slides.children.length,startX=0;
+let index=0,total=slides.children.length;
 function update(){slides.style.transform=`translateX(-${index*100}%)`}
 function next(){if(index<total-1){index++;update()}}
 function prev(){if(index>0){index--;update()}}
 
-/* COUNTDOWN */
-let t=48*3600;
-setInterval(()=>{if(t<=0)return;t--;
-h.textContent=Math.floor(t/3600);
-m.textContent=String(Math.floor((t%3600)/60)).padStart(2,"0");
-s.textContent=String(t%60).padStart(2,"0");},1000);
-
-/* DATA */
+/* PRICES */
 const products={1:1350,2:2500,3:3750};
 let deliveryType="home";
 
 const shipping={
-1:{home:1300,desk:970},2:{home:800,desk:570},3:{home:950,desk:670},
-4:{home:800,desk:570},5:{home:800,desk:570},6:{home:800,desk:570},
-7:{home:950,desk:670},8:{home:1250,desk:770},9:{home:600,desk:470},
-10:{home:750,desk:570},11:{home:1500,desk:1120},12:{home:900,desk:570},
-13:{home:850,desk:570},14:{home:800,desk:570},15:{home:850,desk:570},
-16:{home:650,desk:420},17:{home:850,desk:570},18:{home:800,desk:570},
-19:{home:850,desk:570},20:{home:850,desk:620},21:{home:850,desk:570},
-22:{home:850,desk:570},23:{home:850,desk:570},24:{home:850,desk:570},
-25:{home:850,desk:570},26:{home:500,desk:370}
+1:{home:1300,desk:970},
+2:{home:800,desk:570},
+16:{home:650,desk:420},
+31:{home:800,desk:570}
 };
 
-/* fill wilaya */
-const wilaya=document.getElementById("wilaya");
-for(let i in shipping){
- let op=document.createElement("option");
- op.value=i;
- op.textContent=i+" ولاية";
- wilaya.appendChild(op);
-}
-
 function calc(){
- const q=qty.value;
- const w=wilaya.value;
+ let q=qty.value,w=wilaya.value;
  if(!shipping[w]) return;
- const total=products[q]+shipping[w][deliveryType];
+ let total=products[q]+shipping[w][deliveryType];
  price.innerText="السعر الإجمالي: "+total+" دج";
 }
 qty.onchange=calc;
@@ -247,18 +232,36 @@ function setDelivery(t,el){
  calc();
 }
 
+/* VALIDATION */
+function invalid(el){
+ el.classList.add("shake");
+ setTimeout(()=>el.classList.remove("shake"),500);
+}
+
 /* ORDER */
 function order(){
- document.getElementById("success").style.display="flex";
- let txt="سيتم الاتصال بك من فريق sahla dz تم تاكيد طلبك";
+ let ok=true;
+
+ if(name.value.trim()==""){invalid(name);ok=false;}
+ if(phone.value.trim()==""){invalid(phone);ok=false;}
+ if(wilaya.value==""){invalid(wilaya);ok=false;}
+
+ if(!ok) return;
+
+ const box=document.getElementById("success");
+ box.style.display="flex";
+
+ let txt="سيتم الاتصال بك من فريق sahla dz لتاكيد طلبك";
  let i=0;
- let interval=setInterval(()=>{
-   typing.textContent+=txt[i];
+ typing.textContent="";
+ let inter=setInterval(()=>{
+   typing.textContent += txt[i];
    i++;
-   if(i>=txt.length) clearInterval(interval);
+   if(i>=txt.length) clearInterval(inter);
  },50);
 }
 </script>
 
 </body>
 </html>
+
