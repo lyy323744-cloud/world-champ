@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sahla dz</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fff7ed;color:#333}
+h1{text-align:center;color:#ff7a00;margin:15px 0}
+
+/* ===== COUNTDOWN ===== */
+.countdown-title{text-align:center;font-size:22px;color:#ff7a00}
+.countdown{display:flex;justify-content:center;gap:10px;margin:10px 0 20px}
+.time-box{background:#ff7a00;color:white;width:75px;padding:10px 0;border-radius:12px}
+.time-box span{display:block;font-size:26px;font-weight:bold}
+.time-box small{font-size:12px}
+
+/* ===== LAYOUT ===== */
+.container{display:flex;gap:20px;max-width:1100px;margin:auto;padding:15px}
+@media(max-width:900px){.container{flex-direction:column;}}
+
+/* ===== SLIDER ===== */
+.slider{flex:1;overflow:hidden;border-radius:25px;position:relative;box-shadow:0 0 25px rgba(255,122,0,0.3)}
+.slides{display:flex;transition:0.4s ease}
+.slides img{width:100%;flex-shrink:0;user-select:none}
+.arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:42px;height:42px;border-radius:50%;border:none;
+  background:rgba(255,122,0,0.9);color:white;font-size:22px;
+  cursor:pointer;z-index:10;
+}
+.arrow.left{left:10px}
+.arrow.right{right:10px}
+
+/* ===== DESCRIPTION ===== */
+.features{
+  margin-top:15px;
+  background:white;
+  padding:15px;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(255,122,0,0.2);
+}
+.features h3{color:#ff7a00;margin-top:0}
+
+/* ===== FORM ===== */
+.form-box{flex:1;background:white;padding:20px;border-radius:30px;box-shadow:0 0 30px rgba(255,122,0,0.25)}
+.field{position:relative;margin:12px 0}
+.field input,.field select{
+  width:100%;padding:14px 15px 14px 45px;
+  border-radius:30px;border:2px solid #ff7a00;
+  font-size:15px;box-shadow:0 0 10px rgba(255,122,0,0.3);
+}
+.field i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#ff7a00}
+
+.old-price{text-decoration:line-through;color:red;font-size:13px;margin-right:6px}
+
+/* ===== DELIVERY ===== */
+.delivery-title{color:#ff7a00;font-weight:bold;margin:15px 0 8px}
+.delivery{display:flex;gap:12px}
+.option{flex:1;border:2px solid #ff7a00;border-radius:25px;padding:12px;text-align:center;cursor:pointer}
+.option.active{background:#ff7a00;color:white}
+.option.active i,.option.active p{color:white}
+.option i{font-size:24px;color:#ff7a00}
+.option p{margin:6px 0;color:#ff7a00;font-weight:bold}
+.dot{width:14px;height:14px;border-radius:50%;border:2px solid #ff7a00;margin:auto}
+.option.active .dot{background:white;border-color:white}
+
+/* ===== PRICE ===== */
+.price{text-align:center;font-size:19px;font-weight:bold;color:#ff7a00;margin:15px 0}
+
+/* ===== BUTTON ===== */
+button{
+  width:100%;padding:15px;font-size:18px;border-radius:30px;
+  border:2px solid #ff7a00;background:white;color:#ff7a00;cursor:pointer;
+}
+button:hover{background:#ff7a00;color:white}
+
+/* ===== SUCCESS OVERLAY ===== */
+#success{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:white;
+  z-index:999;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.check{
+  width:100px;height:100px;border-radius:50%;
+  background:white;border:4px solid #ff7a00;position:relative;
+}
+.check::after{
+  content:"";
+  position:absolute;
+  width:25px;height:45px;
+  border-right:6px solid #ff7a00;
+  border-bottom:6px solid #ff7a00;
+  transform:rotate(45deg);
+  left:32px;top:18px;
+}
+#success h3{color:#ff7a00}
+#typing{color:black;font-size:18px;max-width:420px}
+</style>
+</head>
+
+<body>
+
+<h1>sahla dz – آمنة وسريعة</h1>
+
+<div class="countdown-title">مدة التخفيض</div>
+<div class="countdown">
+  <div class="time-box"><span id="h">48</span><small>ساعة</small></div>
+  <div class="time-box"><span id="m">00</span><small>دقيقة</small></div>
+  <div class="time-box"><span id="s">00</span><small>ثانية</small></div>
+</div>
+
+<div class="container">
+
+<!-- SLIDER -->
+<div style="flex:1">
+<div class="slider">
+  <button class="arrow left" onclick="prev()">‹</button>
+  <div class="slides" id="slides">
+    <img src="IMG_20260203_212104_857.jpg">
+    <img src="IMG_20260203_212104_856.jpg">
+    <img src="IMG_20260203_212104_794.jpg">
+    <img src="IMG_20260203_212105_021.jpg">
+    <img src="IMG_20260203_212104_576.jpg">
+  </div>
+  <button class="arrow right" onclick="next()">›</button>
+</div>
+
+<div class="features">
+<h3>ما يميز المنتج</h3>
+<p>
+جهاز الغلق الحراري المتطور هو الرفيق المثالي لكل سيدة بيت:<br>
+🔸 للمجمد: غلق محكم 100% يمنع دخول الهواء للأكل.<br>
+🔸 للقاراج: يحفظ المكسرات والحلويات مقرمشة لأطول مدة.<br>
+🔸 للسفر: خذيه معاك في خرجاتك لإعادة غلق أكياس الطعام بسهولة.<br>
+أصلي، متين، وشكله أنيق يضيف لمسة عصرية لمطبخك. 💎<br>
+⚠️ ملاحظة: الكمية محدودة جداً بسبب الطلب الكبير.<br>
+🛍️ اطلبي الآن عبر الرابط
+</p>
+</div>
+</div>
+
+<!-- FORM -->
+<div class="form-box" id="form">
+
+<div class="field"><i class="fa-solid fa-user"></i><input placeholder="الاسم واللقب"></div>
+<div class="field"><i class="fa-solid fa-phone"></i><input placeholder="رقم الهاتف"></div>
+
+<div class="field">
+<select id="wilaya"></select>
+</div>
+
+<div class="field">
+<select id="qty">
+<option value="1">1 قطعة — 1350 DA <span class="old-price">1800</span></option>
+<option value="2">2 قطعة — 2500 DA <span class="old-price">2700</span></option>
+<option value="3">3 قطع — 3750 DA <span class="old-price">4100</span></option>
+</select>
+</div>
+
+<div class="delivery-title">نوع التوصيل</div>
+<div class="delivery">
+  <div class="option active" onclick="setDelivery('home',this)">
+    <i class="fa-solid fa-house"></i><p>للمنزل</p><div class="dot"></div>
+  </div>
+  <div class="option" onclick="setDelivery('desk',this)">
+    <i class="fa-solid fa-box"></i><p>للمكتب</p><div class="dot"></div>
+  </div>
+</div>
+
+<div class="price" id="price">السعر الإجمالي: -- دج</div>
+<button onclick="order()">اطلب الآن</button>
+</div>
+
+</div>
+
+<!-- SUCCESS -->
+<div id="success">
+  <div class="check"></div>
+  <h3>تم تاكيد الطلب</h3>
+  <p id="typing"></p>
+</div>
+
+<script>
+const slides=document.getElementById("slides");
+let index=0,total=slides.children.length,startX=0;
+function update(){slides.style.transform=`translateX(-${index*100}%)`}
+function next(){if(index<total-1){index++;update()}}
+function prev(){if(index>0){index--;update()}}
+
+/* COUNTDOWN */
+let t=48*3600;
+setInterval(()=>{if(t<=0)return;t--;
+h.textContent=Math.floor(t/3600);
+m.textContent=String(Math.floor((t%3600)/60)).padStart(2,"0");
+s.textContent=String(t%60).padStart(2,"0");},1000);
+
+/* DATA */
+const products={1:1350,2:2500,3:3750};
+let deliveryType="home";
+
+const shipping={
+1:{home:1300,desk:970},2:{home:800,desk:570},3:{home:950,desk:670},
+4:{home:800,desk:570},5:{home:800,desk:570},6:{home:800,desk:570},
+7:{home:950,desk:670},8:{home:1250,desk:770},9:{home:600,desk:470},
+10:{home:750,desk:570},11:{home:1500,desk:1120},12:{home:900,desk:570},
+13:{home:850,desk:570},14:{home:800,desk:570},15:{home:850,desk:570},
+16:{home:650,desk:420},17:{home:850,desk:570},18:{home:800,desk:570},
+19:{home:850,desk:570},20:{home:850,desk:620},21:{home:850,desk:570},
+22:{home:850,desk:570},23:{home:850,desk:570},24:{home:850,desk:570},
+25:{home:850,desk:570},26:{home:500,desk:370}
+};
+
+/* fill wilaya */
+const wilaya=document.getElementById("wilaya");
+for(let i in shipping){
+ let op=document.createElement("option");
+ op.value=i;
+ op.textContent=i+" ولاية";
+ wilaya.appendChild(op);
+}
+
+function calc(){
+ const q=qty.value;
+ const w=wilaya.value;
+ if(!shipping[w]) return;
+ const total=products[q]+shipping[w][deliveryType];
+ price.innerText="السعر الإجمالي: "+total+" دج";
+}
+qty.onchange=calc;
+wilaya.onchange=calc;
+
+function setDelivery(t,el){
+ deliveryType=t;
+ document.querySelectorAll(".option").forEach(o=>o.classList.remove("active"));
+ el.classList.add("active");
+ calc();
+}
+
+/* ORDER */
+function order(){
+ document.getElementById("success").style.display="flex";
+ let txt="سيتم الاتصال بك من فريق sahla dz لتاكيد طلبك";
+ let i=0;
+ let interval=setInterval(()=>{
+   typing.textContent+=txt[i];
+   i++;
+   if(i>=txt.length) clearInterval(interval);
+ },50);
+}
+</script>
+
+</body>
+</html>
